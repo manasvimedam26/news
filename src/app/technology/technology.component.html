@@ -1,0 +1,24 @@
+<div class="container">
+  <h3 id="tableLabel">Technology news in {{this.country}}</h3>
+  <p *ngIf="!articles"><em>Loading...</em></p>
+  <div *ngIf="articles;else noDataBlock" class="row">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mx-auto my-5" *ngFor="let  article of articles">
+          <div class="card h-100">
+            <div class="card-img-caption">
+              <p class="source"> {{article.source?.name}}</p>
+              <img class="card-img-top d-flex align-items-center bg-light" *ngIf="article.urlToImage" src="{{ article.urlToImage }}" alt="Card image top">
+              </div>
+              <div class="card-body">
+                <p class="card-title"><a href="{{article.url}}" target="_blank">{{ article.title }}</a></p>
+                <p class="card-subtitle">{{ article.author }} - {{ article.publishedAt }}</p>
+                <p class="card-text">{{ article.description }}</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noDataBlock>No News found</ng-template>
+  </div>
